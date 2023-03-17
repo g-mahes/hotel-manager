@@ -11,7 +11,7 @@ import Typography from '@mui/material/Typography';
 
 import Button from '@mui/material/Button';
 
-
+// sign out component
 function SignOut() {
     const context = useContext(MainContext);
     return context.auth.currentUser && (
@@ -22,6 +22,7 @@ function SignOut() {
     )
 }
 
+// sign in component using Google Auth
 function SignIn(props) {
     const context = useContext(MainContext);
     const { setEmail } = props;
@@ -45,13 +46,10 @@ function SignIn(props) {
 function LandingPage() {
     const { managementView, setManagementView, housekeepingView, setHousekeepingView, auth } = useContext(MainContext);
 
-    const [housekeepingPasswordDialog, setHousekeepingPasswordDialog] = useState(false);
-    const [managementPasswordDialog, setManagementPasswordDialog] = useState(false);
-    const [passwordDialog, setPasswordDialog] = useState(false);
 
     const [user] = useAuthState(auth);
     const [email, setEmail] = useState("")
-    const valid = [""];
+    const valid = [""]; // list of valid emails
 
     if ((user && !valid.includes(email) && email !== "")) {
         return (
