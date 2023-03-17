@@ -34,9 +34,6 @@ function HousekeepingView() {
         getRoomObject();
     }, []);
 
-    useEffect(() => {
-
-    }, []);
 
     // method to get Room Collection from Firestone
     const getRoomObject = () => {
@@ -166,10 +163,6 @@ function HousekeepingView() {
                         })
                     }
                 </div>
-
-
-
-
             </div >
 
 
