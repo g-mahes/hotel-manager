@@ -8,30 +8,8 @@ import { MainContext } from "./MainContext"
 import LandingPage from './LandingPage'
 import Button from '@mui/material/Button';
 
-firebase.initializeApp({
 
-})
-
-const auth = firebase.auth();
-const firestone = firebase.firestore();
-
-function SignIn(props) {
-  const context = useContext(MainContext);
-  const { setEmail } = props;
-
-  const signInWithGoogle = () => {
-    const provider = new firebase.auth.GoogleAuthProvider();
-    context.auth.signInWithPopup(provider)
-      .then((userCredential) => {
-        setEmail(userCredential.user.email);
-        console.log(userCredential.user.email)
-      });
-  }
-  return (
-    <button onClick={signInWithGoogle}>Sign in with Google</button>
-  );
-}
-
+// sign out component
 function SignOut() {
   const context = useContext(MainContext);
   return context.auth.currentUser && (
@@ -48,7 +26,9 @@ function App() {
   const context = useContext(MainContext);
   const [user] = useAuthState(context.auth);
   const [email, setEmail] = useState("")
-  const valid = [""];
+  const valid = [""]; // list of valid emails
+  
+  // not using valid email to access web app
   if ((user && !valid.includes(email) && email !== "")) {
     return (
       <section>
